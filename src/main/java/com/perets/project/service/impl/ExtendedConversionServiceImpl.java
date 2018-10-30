@@ -4,8 +4,6 @@ import com.perets.project.dto.PageDto;
 import com.perets.project.service.ExtendedConversionService;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Collections;

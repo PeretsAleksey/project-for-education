@@ -3,12 +3,10 @@ package com.perets.project.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.util.Date;
 import java.util.StringJoiner;
 
-@Document(indexName = "educationdb", type = "user")
 public class User {
 
     @Id
