@@ -1,0 +1,5 @@
+id,first_name,last_name,email,status,date_added,role
+2a5d8dae-83a8-43d8-8a6b-294026d63319,Oleksii,Perets,Oleksii_Perets@epam.com,ACTIVE,2018-10-30 12:13:10,ADMIN
+688ae0c7-e1d3-4b3e-87c0-e38c89267f2c,Валентин,Корниенко,valentyn_korniienko@epam.com,ACTIVE,2018-10-30 12:13:10,MANAGER
+bbc92468-ef97-4bdc-94cb-a53f167b1f5d,Oleksii,Hovderchak,oleksii_hovderchak@epam.com,ACTIVE,2018-10-30 12:13:10,USER
+8084205e-fe17-4433-8fd2-cbe051f64f9c,Dmytro,Cherkashyn,dmytro_cherkashyn@epam.com,INACTIVE,2018-10-30 12:13:10,USER

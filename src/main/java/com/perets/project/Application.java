@@ -1,8 +1,7 @@
 package com.perets.project;
 
-import com.perets.project.mapper.PaymentMapper;
-import com.perets.project.mapper.SubscriberMapper;
-import com.perets.project.mapper.TariffMapper;
+import com.perets.project.domain.User;
+import com.perets.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,15 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-    private SubscriberMapper subscriberMapper;
-    private PaymentMapper paymentMapper;
-    private TariffMapper tariffMapper;
+    private UserService userService;
 
     @Autowired
-    public Application(SubscriberMapper subscriberMapper, PaymentMapper paymentMapper, TariffMapper tariffMapper) {
-        this.subscriberMapper = subscriberMapper;
-        this.paymentMapper = paymentMapper;
-        this.tariffMapper = tariffMapper;
+    public Application(UserService userService) {
+        this.userService = userService;
     }
 
     public static void main(String[] args) {
@@ -27,20 +22,20 @@ public class Application implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        subscriberMapper.getSubscriber("Валенитн").forEach(System.out::println);
+    public void run(String... args) {
+        System.out.println(userService.getUserById("2a5d8dae-83a8-43d8-8a6b-294026d63319"));
         System.out.println("---------------------------");
-/*        System.out.println(subscriberMapper.getSubscriberById(1));
-        System.out.println(subscriberMapper.getSubscriberById(2));
-        System.out.println(subscriberMapper.getSubscriberById(3));
+        userService.getUsers(new User()).forEach(System.out::println);
+        /*userMapper.getUsers().forEach(System.out::println);
         System.out.println("---------------------------");
-        System.out.println(paymentMapper.getPaymentByIdSub(1));
-        System.out.println(paymentMapper.getPaymentByIdSub(2));
-        System.out.println(paymentMapper.getPaymentByIdSub(3));
+        System.out.println(roleMapper.getRoleById(1));
         System.out.println("---------------------------");
-        System.out.println(tariffMapper.getTariffById(1));
-        System.out.println(tariffMapper.getTariffById(3));
-        System.out.println(tariffMapper.getTariffById(2));*/
+        roleMapper.getRoles().forEach(System.out::println);
+        System.out.println("---------------------------");
+        Role role = new Role();
+        role.setId(4);
+        role.setName("SOME_ROLE");*/
+
     }
 
 }

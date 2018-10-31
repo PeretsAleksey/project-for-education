@@ -12,9 +12,9 @@ public class UserEntityToUserDtoConverter implements Converter<User, UserDto> {
     @Override
     public UserDto convert(@NonNull User source) {
         UserDto userDto = new UserDto();
-        userDto.setFullName(source.getFullName());
+     /*   userDto.setFullName(source.getFullName());
         userDto.setEmail(source.getEmail());
-        userDto.setDateAdded(source.getDateAdded());
+        userDto.setDateAdded(source.getDateAdded());*/
         return userDto;
     }
 }

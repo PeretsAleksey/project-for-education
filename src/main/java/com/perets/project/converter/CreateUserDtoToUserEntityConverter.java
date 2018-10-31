@@ -12,8 +12,8 @@ public class CreateUserDtoToUserEntityConverter implements Converter<CreateUserD
     @Override
     public User convert(@NonNull CreateUserDto source) {
         User user = new User();
-        user.setFullName(source.getFullName());
-        user.setEmail(source.getEmail());
+    /*    user.setFullName(source.getFullName());
+        user.setEmail(source.getEmail());*/
         return user;
     }
 }

@@ -2,22 +2,42 @@ package com.perets.project.dto;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
+import java.util.StringJoiner;
 
 public class UserDto {
 
-    private String fullName;
+    private String id;
+    private String firstName;
+    private String lastName;
     private String email;
+    private String status;
     private Date dateAdded;
+    private String roleName;
 
-    public String getFullName() {
-        return fullName;
+    public String getId() {
+        return id;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -28,12 +48,28 @@ public class UserDto {
         this.email = email;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Date getDateAdded() {
         return dateAdded;
     }
 
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     @Override
@@ -45,27 +81,39 @@ public class UserDto {
         UserDto userDto = (UserDto) o;
 
         return new EqualsBuilder()
-                .append(fullName, userDto.fullName)
+                .append(id, userDto.id)
+                .append(firstName, userDto.firstName)
+                .append(lastName, userDto.lastName)
                 .append(email, userDto.email)
+                .append(status, userDto.status)
                 .append(dateAdded, userDto.dateAdded)
+                .append(roleName, userDto.roleName)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(fullName)
+                .append(id)
+                .append(firstName)
+                .append(lastName)
                 .append(email)
+                .append(status)
                 .append(dateAdded)
+                .append(roleName)
                 .toHashCode();
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("fullName", fullName)
-                .append("email", email)
-                .append("dateAdded", dateAdded)
+        return new StringJoiner(", ", UserDto.class.getSimpleName() + "[", "]")
+                .add("id='" + id + "'")
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("email='" + email + "'")
+                .add("status='" + status + "'")
+                .add("dateAdded=" + dateAdded)
+                .add("roleName='" + roleName + "'")
                 .toString();
     }
 }

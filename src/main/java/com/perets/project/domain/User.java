@@ -2,18 +2,19 @@ package com.perets.project.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 import java.util.StringJoiner;
 
 public class User {
 
-    @Id
     private String id;
-    private String fullName;
+    private String firstName;
+    private String lastName;
     private String email;
+    private String status;
     private Date dateAdded;
+    private Role role;
 
     public String getId() {
         return id;
@@ -23,12 +24,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -39,12 +48,28 @@ public class User {
         this.email = email;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Date getDateAdded() {
         return dateAdded;
     }
 
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -57,9 +82,12 @@ public class User {
 
         return new EqualsBuilder()
                 .append(id, user.id)
-                .append(fullName, user.fullName)
+                .append(firstName, user.firstName)
+                .append(lastName, user.lastName)
                 .append(email, user.email)
+                .append(status, user.status)
                 .append(dateAdded, user.dateAdded)
+                .append(role, user.role)
                 .isEquals();
     }
 
@@ -67,9 +95,12 @@ public class User {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(id)
-                .append(fullName)
+                .append(firstName)
+                .append(lastName)
                 .append(email)
+                .append(status)
                 .append(dateAdded)
+                .append(role)
                 .toHashCode();
     }
 
@@ -77,9 +108,12 @@ public class User {
     public String toString() {
         return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
                 .add("id='" + id + "'")
-                .add("fullName='" + fullName + "'")
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
                 .add("email='" + email + "'")
+                .add("status='" + status + "'")
                 .add("dateAdded=" + dateAdded)
+                .add("role=" + role)
                 .toString();
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.perets.project.mapper.UserMapper">
+
+    <resultMap id="userResultMap" type="com.perets.project.domain.User">
+        <id column="id" property="id"/>
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="status" property="status"/>
+        <result column="date_added" property="dateAdded"/>
+        <result column="role" property="role"/>
+    </resultMap>
+
+    <select id="getUserById" resultMap="userResultMap" parameterType="java.lang.String">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <select id="getUsers" resultMap="userResultMap" parameterType="com.perets.project.domain.User">
+        SELECT * FROM users
+        <where>
+            <if test="firstName !=null">first_name like #{firstName}</if>
+            <if test="lastName !=null">OR last_name like #{lastName}</if>
+            <if test="email !=null">OR email = #{email}</if>
+            <if test="status !=null">OR status = #{status}</if>
+            <if test="role !=null">OR role = #{role}</if>
+        </where>
+    </select>
+</mapper>

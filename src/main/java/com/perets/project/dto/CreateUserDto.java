@@ -2,7 +2,6 @@ package com.perets.project.dto;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -10,18 +9,31 @@ import javax.validation.constraints.NotNull;
 public class CreateUserDto {
 
     @NotNull
-    private String fullName;
-
+    private String firstName;
+    @NotNull
+    private String lastName;
     @NotNull
     @Email
     private String email;
+    @NotNull
+    private String status;
+    @NotNull
+    private Integer roleId;
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -32,37 +44,47 @@ public class CreateUserDto {
         this.email = email;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
+        if (this == o) return true;
 
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (o == null || getClass() != o.getClass()) return false;
 
-        CreateUserDto createUserDto = (CreateUserDto) o;
+        CreateUserDto that = (CreateUserDto) o;
 
         return new EqualsBuilder()
-                .append(fullName, createUserDto.fullName)
-                .append(email, createUserDto.email)
+                .append(firstName, that.firstName)
+                .append(lastName, that.lastName)
+                .append(email, that.email)
+                .append(status, that.status)
+                .append(roleId, that.roleId)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(fullName)
+                .append(firstName)
+                .append(lastName)
                 .append(email)
+                .append(status)
+                .append(roleId)
                 .toHashCode();
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .append("fullName", fullName)
-                .append("email", email)
-                .toString();
     }
 }

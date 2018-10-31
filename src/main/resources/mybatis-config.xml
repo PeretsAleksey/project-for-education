@@ -4,8 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <mappers>
-        <mapper class="com.perets.project.mapper.SubscriberMapper"/>
-        <mapper class="com.perets.project.mapper.PaymentMapper"/>
-        <mapper class="com.perets.project.mapper.TariffMapper"/>
+        <mapper class="com.perets.project.mapper.UserMapper"/>
     </mappers>
 </configuration>
