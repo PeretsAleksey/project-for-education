@@ -1,24 +1,32 @@
 package com.perets.project.service.impl;
 
 import com.perets.project.constant.ErrorMessage;
+import com.perets.project.domain.Role;
 import com.perets.project.domain.User;
+import com.perets.project.domain.UserStatus;
 import com.perets.project.service.UserService;
-import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.time.ZonedDateTime;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private SqlSession session;
+    private SqlSessionTemplate session;
 
     @Autowired
-    public UserServiceImpl(SqlSession session) {
+    public UserServiceImpl(SqlSessionTemplate session) {
         this.session = session;
     }
 
@@ -32,21 +40,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getUsers(User user) {
-        List<User> users = session.selectList("getUsers", user);
+    public List<User> getUsers(String firstName, String lastName, String email, String status, String role) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("firstName", firstName);
+        parameters.put("lastName", lastName);
+        parameters.put("email", email);
+        parameters.put("status", status);
+        parameters.put("role", Role.getRole(role));
+        List<User> users = session.selectList("getUsers", parameters);
         if (CollectionUtils.isEmpty(users)) {
             throw new IllegalArgumentException(ErrorMessage.THERE_ARE_NOT_USERS_WITH_SUCH_PARAMETERS);
         }
         return users;
     }
 
+    @Transactional
     @Override
-    public Integer deleteUserById(Integer id) {
-        return null;
+    public User addUser(User user) {
+        user.setId(UUID.randomUUID().toString());
+        user.setStatus(UserStatus.ACTIVE);
+        user.setDateAdded(Date.from(ZonedDateTime.now().toInstant()));
+        session.insert("addUser", user);
+        return user;
     }
 
+    @Transactional
     @Override
-    public Integer addUser(User user) {
-        return null;
+    public void deleteUserById(String id) {
+        session.delete("deleteUserById", id);
     }
+
 }

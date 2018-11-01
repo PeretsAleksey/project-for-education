@@ -7,14 +7,16 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserEntityToUserDtoConverter implements Converter<User, UserDto> {
+public class UserToUserDtoConverter implements Converter<User, UserDto> {
 
     @Override
     public UserDto convert(@NonNull User source) {
         UserDto userDto = new UserDto();
-     /*   userDto.setFullName(source.getFullName());
+        userDto.setFirstName(source.getFirstName());
+        userDto.setLastName(source.getLastName());
         userDto.setEmail(source.getEmail());
-        userDto.setDateAdded(source.getDateAdded());*/
+        userDto.setStatus(source.getStatus().getName());
+        userDto.setRoleName(source.getRole().getName());
         return userDto;
     }
 }

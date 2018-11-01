@@ -18,7 +18,7 @@ databaseChangeLog() {
                 constraints(nullable: false)
             }
             column(name: 'email', type: 'varchar(50)') {
-                constraints(nullable: false)
+                constraints(nullable: false, unique: true)
             }
             column(name: 'status', type: 'ENUM("ACTIVE", "INACTIVE")', defaultValue: 'ACTIVE') {
                 constraints(nullable: false)

@@ -5,13 +5,14 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface UserMapper {
 
     User getUserById(@Param("id") String id);
 
-    List<User> getUsers(User user);
+    List<User> getUsers(Map<String, Object> parameters);
 
     void deleteUserById(@Param("id") Integer id);
 

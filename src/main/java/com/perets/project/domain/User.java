@@ -12,7 +12,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private String status;
+    private UserStatus status;
     private Date dateAdded;
     private Role role;
 
@@ -48,11 +48,11 @@ public class User {
         this.email = email;
     }
 
-    public String getStatus() {
+    public UserStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(UserStatus status) {
         this.status = status;
     }
 

@@ -6,6 +6,7 @@ public class ErrorMessage {
     public static final String USER_ALREADY_EXISTS = "User already exists";
     public static final String USER_WITH_SPECIFIED_ID_DOES_NOT_EXIST = "User with specified id does not exist";
     public static final String THERE_ARE_NOT_USERS_WITH_SUCH_PARAMETERS = "There are no users with such parameters";
+    public static final String USER_ID = "Incorrect id";
 
     private ErrorMessage() {
         throw new UnsupportedOperationException();

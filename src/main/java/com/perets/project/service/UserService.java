@@ -8,10 +8,10 @@ public interface UserService {
 
     User getUserById(String id);
 
-    List<User> getUsers(User user);
+    List<User> getUsers(String firstName, String lastName, String email, String status, String role);
 
-    Integer deleteUserById(Integer id);
+    void deleteUserById(String id);
 
-    Integer addUser(User user);
+    User addUser(User user);
 
 }

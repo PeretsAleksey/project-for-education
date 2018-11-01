@@ -17,14 +17,30 @@
         SELECT * FROM users WHERE id = #{id}
     </select>
 
-    <select id="getUsers" resultMap="userResultMap" parameterType="com.perets.project.domain.User">
+    <select id="getUsers" resultMap="userResultMap" parameterType="java.util.Map">
         SELECT * FROM users
         <where>
-            <if test="firstName !=null">first_name like #{firstName}</if>
-            <if test="lastName !=null">OR last_name like #{lastName}</if>
+            <if test="firstName !=null">
+                <bind name="firstName" value="'%' + firstName + '%'"/>
+                first_name LIKE #{firstName}
+            </if>
+            <if test="lastName !=null">
+                <bind name="lastName" value="'%' + lastName + '%'"/>
+                last_name LIKE #{lastName}
+                OR last_name LIKE #{lastName}
+            </if>
             <if test="email !=null">OR email = #{email}</if>
             <if test="status !=null">OR status = #{status}</if>
             <if test="role !=null">OR role = #{role}</if>
         </where>
     </select>
+
+    <insert id="addUser" parameterType="com.perets.project.domain.User">
+        INSERT INTO users (id, first_name, last_name, email, status, date_added, role)
+        VALUES (#{id}, #{firstName}, #{lastName}, #{email}, #{status}, #{dateAdded}, #{role})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="java.lang.String">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
 </mapper>
