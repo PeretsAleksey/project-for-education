@@ -16,9 +16,7 @@ public class CreateUserDto {
     @Email
     private String email;
     @NotNull
-    private String status;
-    @NotNull
-    private Integer roleId;
+    private String role;
 
     public String getFirstName() {
         return firstName;
@@ -44,20 +42,12 @@ public class CreateUserDto {
         this.email = email;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRole() {
+        return role;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -72,8 +62,7 @@ public class CreateUserDto {
                 .append(firstName, that.firstName)
                 .append(lastName, that.lastName)
                 .append(email, that.email)
-                .append(status, that.status)
-                .append(roleId, that.roleId)
+                .append(role, that.role)
                 .isEquals();
     }
 
@@ -83,8 +72,7 @@ public class CreateUserDto {
                 .append(firstName)
                 .append(lastName)
                 .append(email)
-                .append(status)
-                .append(roleId)
+                .append(role)
                 .toHashCode();
     }
 }
